@@ -1,6 +1,6 @@
 # General Lottery Dapp
 
-This project is a boilerplate for a decentralized lottery application. It is organized into four main parts:
+This project is a simple template for a decentralized lottery application. It is organized into four main parts:
 
 - **contracts/** – Solidity smart contracts.
 - **backend/** – Node.js server that interacts with the blockchain.
@@ -9,9 +9,9 @@ This project is a boilerplate for a decentralized lottery application. It is org
 
 ## Features
 
-- Smart contract for managing a lottery draw (placeholder in `contracts/Lottery.sol`).
-- Express backend that can be expanded to expose API endpoints.
-- Simple frontend scaffold ready for integration with a JS framework.
+- Solidity smart contract in `contracts/Lottery.sol` that allows players to enter and the manager to pick a winner.
+- Express backend with API endpoints to enter the lottery and list current players.
+- Simple frontend scaffold ready for integration with your framework of choice.
 - Deployment and automation scripts in the `scripts` directory.
 
 ## Setup
@@ -26,12 +26,20 @@ This project is a boilerplate for a decentralized lottery application. It is org
    ```
 3. Open `frontend/index.html` in a browser to view the basic UI.
 
+The backend expects the following environment variables when connecting to a blockchain:
+
+| Variable | Description |
+| -------- | ----------- |
+| `RPC_URL` | URL of the Ethereum node to connect to |
+| `CONTRACT_ADDRESS` | Address of the deployed Lottery contract |
+| `PRIVATE_KEY` | Private key used to sign transactions (optional for read-only) |
+
 ## Deployment
 
-Deployment scripts will live inside `scripts/`. To deploy the smart contract (when implemented), run:
+Deployment scripts live inside `scripts/`. A basic Hardhat script is provided:
 
 ```bash
-node scripts/deploy.js
+npx hardhat run scripts/deploy.js --network <network>
 ```
 
-Modify `scripts/deploy.js` with the necessary logic for your deployment tooling (e.g., Hardhat or Truffle).
+Make sure Hardhat is installed and configured for your network of choice.

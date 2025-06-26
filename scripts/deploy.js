@@ -1,9 +1,14 @@
-// TODO: script to deploy smart contracts
+// Simple Hardhat deployment script for the Lottery contract
+const hre = require('hardhat');
+
 async function main() {
-  console.log('Deploy script placeholder');
+  const Lottery = await hre.ethers.getContractFactory('Lottery');
+  const lottery = await Lottery.deploy();
+  await lottery.deployed();
+  console.log('Lottery deployed to:', lottery.address);
 }
 
 main().catch((error) => {
   console.error(error);
-  process.exit(1);
+  process.exitCode = 1;
 });
